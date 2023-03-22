@@ -3,9 +3,7 @@ pipeline {
     stages {	
         stage('Building image') {
             steps{
-                script {
-                    docker.build("jokercat2886/boot:latest")
-                }
+                sh 'docker build -t jokercat2886/boot:latest'
             }
         }
 
