@@ -1,8 +1,4 @@
-FROM python:3
-WORKDIR /app
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-RUN chmod +x entrypoint.sh
-# ENTRYPOINT ["./entrypoint.sh"]
-CMD ["nohup","python", "./app/manage.py", "runserver", "0.0.0.0:8000"]
+FROM python:3.8-alpine
+RUN pip3 install --no-cache-dir pytest==7.2.0
+COPY server.py /server.py
+ENTRYPOINT ["python3","-u", "server.py"]
